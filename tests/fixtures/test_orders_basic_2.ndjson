@@ -1,2 +1,2 @@
-{"type":"create","ts":999,"seq":1,"symbol":"ABC","side":"S","order_id":"S1","price":101,"qty":5}
-{"type":"create","ts":1000,"seq":2,"symbol":"ABC","side":"B","order_id":"B1","price":100,"qty":10} // incoming buy price compared with running max of ask price
+{"type":"create","ts":999,"seq":1,"symbol":"ABC","side":"S","order_id":"S1","price":50,"qty":5}
+{"type":"create","ts":1000,"seq":2,"symbol":"ABC","side":"B","order_id":"B1","price":100,"qty":10}
