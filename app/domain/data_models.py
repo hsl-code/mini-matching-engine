@@ -51,20 +51,22 @@ class Trade:
         self.timestamp = None
         self.sequence_number = None
         self.symbol = None
-        self.side = None
-        self.order_id = None
-        self.price = None
+        self.buy_order_id = None
+        self.sell_order_id = None
         self.quantity = None
+        self.price = None
+        self.maker_order_id = None
+        self.taker_side = None
 
     def to_json(self):
         return {
             "ts":self.timestamp,
             "seq":self.sequence_number,
             "symbol":self.symbol,
-            "buy_order_id":self.order_id,
-            "sell_order_id":self.order_id,
+            "buy_order_id":self.buy_order_id,
+            "sell_order_id":self.sell_order_id,
             "qty":self.quantity,
             "price":self.price,
-            "maker_order_id":self.order_id,
-            "taker_side":self.side,
+            "maker_order_id":self.maker_order_id,
+            "taker_side":self.taker_side,
             }

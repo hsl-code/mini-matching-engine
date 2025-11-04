@@ -46,3 +46,6 @@ class MatchingEngine:
             self.order_book.cancel_order(order)
         else:
             logger.error("Order type not recognised.")
+
+        logger.info("Get trades as array.")
+        return self.order_book.get_trades()

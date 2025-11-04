@@ -77,3 +77,7 @@ class OrderBook:
             logger.error("Side attribute not recognised.")
         
         del self.orders[cancel_obj.order_id]
+    
+    def get_trades(self):
+        """Return all trades as list of JSON objects."""
+        return [trade.to_json() for trade in self.trades]
