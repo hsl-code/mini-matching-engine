@@ -1,0 +1,2 @@
+{"type":"create","ts":1040,"seq":5,"symbol":"ABC","side":"B","order_id":"B2","price":101,"qty":2}
+{"type":"amend","ts":1050,"seq":6,"symbol":"ABC","order_id":"B2","qty":5}

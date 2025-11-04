@@ -1,7 +1,3 @@
-"""Application/Microservices boilerplate code.
-
-The process method is called.
-"""
 from logger import getLogger
 logger = getLogger(__name__)
 
@@ -16,6 +12,10 @@ def main(input_filepath):
                     )
     logger.info("Process stream data.")
     output = engine.process_stream()
+    # Output data to stdout
+    # For production, this would be replaced with writing to a database 
+    # with a different datastorage option e.g. 'psql'
+    logger.info("Trades created: {}".format(output))
 
 
 if __name__=="__main__":
