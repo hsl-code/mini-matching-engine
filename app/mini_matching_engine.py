@@ -24,7 +24,8 @@ class MatchingEngine:
         input_stream = self.datasource.load(self.input_source)
 
         while input_stream:
-            order = input_stream.popleft()
+            # Pop the first order
+            order = input_stream.pop(0)
             self.process(order)
 
         return self.datastorage.output_stream()

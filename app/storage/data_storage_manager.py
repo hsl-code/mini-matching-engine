@@ -1,5 +1,4 @@
-from storage.data_storage import FileStorage
-from storage.data_storage import PostgreSQL
+from storage.data_storage import DictOutput
 
 
 class DataStorageManager:
@@ -7,9 +6,12 @@ class DataStorageManager:
         self.data_storage = data_storage
 
     def output_stream(self):
-        """Given the data storage attribute value, returns the right data storage."""
+        """Given the data storage attribute value, returns the right data storage.
+        
+        For instance, if we were using PostgreSQL, then we could add:
         if self.data_storage == 'psql':
             return PostgreSQL()
-    
-        if self.data_storage == 'file':
-            return FileStorage()
+        where PostgreSQL would be a new class in data_storage.py
+        """    
+        if self.data_storage == 'dict_array':
+            return DictOutput().output_stream()

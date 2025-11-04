@@ -23,7 +23,7 @@ def test_basic():
     engine = MatchingEngine(
         input_source="../fixtures/test_orders_basic.ndjson",
         datasource='file', 
-        datastorage='file'
+        datastorage='dict_array'
         )
     output_stream = engine.process_stream()
     assert output_stream == expected

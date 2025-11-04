@@ -9,12 +9,12 @@ def main(input_filepath):
     engine = MatchingEngine(
                     input_filepath,
                     datasource='file',
-                    datastorage='file'
+                    datastorage='dict_array'
                     )
     output = engine.process_stream()
     print(output)
 
 
 if __name__=="__main__":
-    input_filepath = "../data/orders.ndjson"
+    input_filepath = "data/orders.ndjson"
     main(input_filepath)

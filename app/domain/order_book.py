@@ -43,13 +43,13 @@ class OrderBook:
         self.orders[order.order_id] = order
         
         # Determine which side we're adding to
-        if order.side == 'B':
+        if order.side == "B":
             # Add to buys dict at the appropriate price level
             if order.price not in self.buys:
                 self.buys[order.price] = OrderedDict()
 
             self.buys[order.price][order.order_id] = order
-        elif order.side == 'S':  # order.side == 'S'
+        elif order.side == "S":  # order.side == 'S'
             # Add to sells dict at the appropriate price level
             if order.price not in self.sells:
                 self.sells[order.price] = OrderedDict()
