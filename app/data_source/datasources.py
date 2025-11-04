@@ -1,6 +1,10 @@
-"""Can easily extend and add more datasources here.
+"""Module containing classes for various data sources.
 
-For instance, if we wanted to add Kafka as an input stream, we could simply add
+This module was written in an extensible manner so as to
+enable ease of adding new data sources.
+
+For instance, if we wanted to add Kafka as an input stream, we could 
+simply add
 
 class KafkaInputStream(DataLoader):
     def __init__(self) -> None:
