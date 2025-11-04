@@ -26,6 +26,6 @@ class DictOutput(DataStorage):
     def __init__(self) -> None:
         pass
     
-    def output_stream(self):
+    def output_stream(self, output):
         """Output processed data as an array of dictionaries."""
-        pass
+        return [datum.to_dict() for datum in output]

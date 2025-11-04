@@ -19,6 +19,7 @@ class MatchingEngine:
         self.datasource = DataSourceManager(datasource)
         self.datastorage = DataStorageManager(datastorage)
         self.order_book = OrderBook()
+        self.output = []
 
     def process_stream(self):
         logger.info("Loading input source into input stream.")
@@ -29,10 +30,13 @@ class MatchingEngine:
         while input_stream:
             # Pop the first order
             order = input_stream.pop(0)
-            print(order)
-            self.process(order)
+            print("Current order: ", order)
+            processed_data = self.process(order)
+            logger.info("Add processed data to output stream.")
+            self.output.extend(processed_data)
+            print(len(self.output))
 
-        return self.datastorage.output_stream()
+        return self.datastorage.output_stream(self.output)
     
     def process(self, order):
         if order.type == "create":

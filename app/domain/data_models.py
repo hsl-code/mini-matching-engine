@@ -47,18 +47,27 @@ class Cancel:
 
 
 class Trade:
-    def __init__(self) -> None:
-        self.timestamp = None
-        self.sequence_number = None
-        self.symbol = None
-        self.buy_order_id = None
-        self.sell_order_id = None
-        self.quantity = None
-        self.price = None
-        self.maker_order_id = None
-        self.taker_side = None
+    def __init__(self,
+                 timestamp,
+                 sequence_number,
+                 symbol,
+                 buy_order_id,
+                 sell_order_id,
+                 quantity,
+                 price,
+                 maker_order_id,
+                 taker_side) -> None:
+        self.timestamp = timestamp
+        self.sequence_number = sequence_number
+        self.symbol = symbol
+        self.buy_order_id = buy_order_id
+        self.sell_order_id = sell_order_id
+        self.quantity = quantity
+        self.price = price
+        self.maker_order_id = maker_order_id
+        self.taker_side = taker_side
 
-    def to_json(self):
+    def to_dict(self):
         return {
             "ts":self.timestamp,
             "seq":self.sequence_number,
