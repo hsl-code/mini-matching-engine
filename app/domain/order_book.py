@@ -4,10 +4,6 @@ logger = getLogger(__name__)
 
 from collections import OrderedDict
 
-from domain.data_models import Trade
-from domain.data_models import Buy
-from domain.data_models import Sell
-
 
 
 class OrderBook:
@@ -34,11 +30,6 @@ class OrderBook:
         If the order crosses with existing orders, execute trades.
         Any remaining quantity rests on the book.
         """
-        # Check for duplicate order_id
-        if order.order_id in self.orders:
-            # Ignore duplicate - log warning if logging is enabled
-            return
-        
         # Store in orders dict
         self.orders[order.order_id] = order
         
@@ -65,16 +56,6 @@ class OrderBook:
             return
 
         self.orders[amend_obj.order_id].quantity = amend_obj.quantity
-
-        """
-        todo delete?
-        if amend_obj.side == "S":
-            self.buys[amend_obj.price][amend_obj.order_id].quantity = amend_obj.quantity
-        elif amend_obj.side == "B":
-            self.sells[amend_obj.price][amend_obj.order_id].quantity = amend_obj.quantity
-        else:
-            raise ValueError("Side attribute not recognised.")
-        """
 
     def cancel_order(self, cancel_obj):
         """Delete sell object from both orders and sells dictionaries."""

@@ -2,6 +2,9 @@
 
 The process method is called.
 """
+from logger import getLogger
+logger = getLogger(__name__)
+
 from mini_matching_engine import MatchingEngine
 
 
@@ -11,7 +14,9 @@ def main(input_filepath):
                     datasource='file',
                     datastorage='dict_array'
                     )
+    logger.info("Process stream data.")
     output = engine.process_stream()
+    logger.info("Output stream generated.")
     print(output)
 
 
