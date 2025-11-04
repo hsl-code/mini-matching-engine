@@ -71,32 +71,6 @@ The implementation is entirely in-memory with no persistence layer, optimized fo
 
 The system currently has no awareness of time-based market events like market open/close or trading halts, which real matching engines must handle. There's also no support for different order types beyond basic limit orders, no support for multiple instruments being processed in parallel, and no configuration management for tuning processing parameters.
 
-## Test Cases
-
-### Basic Scenarios
-- ✅ Simple buy-sell match
-- ✅ Partial fills with resting orders
-- ✅ Multiple trades from single order
-- ✅ No match (order rests on book)
-
-### Order Lifecycle
-- ✅ Create → Match → Trade
-- ✅ Create → Amend → Match
-- ✅ Create → Cancel (before match)
-- ✅ Amend with qty=0 (treat as cancel)
-
-### Edge Cases
-- ✅ Duplicate order_id (should ignore)
-- ✅ Cancel non-existent order (log warning)
-- ✅ Amend non-existent order (log warning)
-- ✅ Out-of-sequence numbers (validation)
-- ✅ Multiple orders at same price (FIFO)
-
-### Price Priority
-- ✅ Best price executes first (not FIFO across prices)
-- ✅ Crossing orders match immediately
-- ✅ Non-crossing orders rest on book
-
 ## Setup & Usage
 
 ### Running the Engine
