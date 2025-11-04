@@ -16,7 +16,6 @@ def main(input_filepath):
                     )
     logger.info("Process stream data.")
     output = engine.process_stream()
-    print(output)
 
 
 if __name__=="__main__":

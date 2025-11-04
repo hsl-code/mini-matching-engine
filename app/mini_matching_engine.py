@@ -24,17 +24,14 @@ class MatchingEngine:
     def process_stream(self):
         logger.info("Loading input source into input stream.")
         input_stream = self.datasource.load(self.input_source)
-        print(input_stream)
 
         logger.info("Commence stream data processing.")
         while input_stream:
             # Pop the first order
             order = input_stream.pop(0)
-            print("Current order: ", order)
             processed_data = self.process(order)
             logger.info("Add processed data to output stream.")
             self.output.extend(processed_data)
-            print(len(self.output))
 
         return self.datastorage.output_stream(self.output)
     

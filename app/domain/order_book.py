@@ -99,7 +99,6 @@ class OrderBook:
             )
             logger.info("New trade added to output stream.")
             self.trades.append(trade)
-            print(self.trades)
             
             # Update quantities
             logger.info("Updating trade quantities.")
@@ -152,7 +151,6 @@ class OrderBook:
             )
             logger.info("New trade added to output stream.")
             self.trades.append(trade)
-            print(self.trades)
             
             # Update quantities
             logger.info("Updating trade quantities.")
