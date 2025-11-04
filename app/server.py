@@ -12,6 +12,7 @@ def main(input_filepath):
                     )
     logger.info("Process stream data.")
     output = engine.process_stream()
+
     # Output data to stdout
     # For production, this would be replaced with writing to a database 
     # with a different datastorage option e.g. 'psql'
