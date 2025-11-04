@@ -32,8 +32,9 @@ class OrderBook:
         If the order crosses with existing orders, execute trades.
         Any remaining quantity rests on the book.
         """
-        # Store in orders dict
-        self.orders[order.order_id] = order
+        if order.order_id in self.orders:
+            logger.warning(f"Duplicate order_id {order.order_id} ignored")
+            return
         
         if order.side == "B":
             self._match_buy_order(order)
@@ -98,7 +99,7 @@ class OrderBook:
                 taker_side="B"
             )
             logger.info("New trade added to output stream.")
-            self.trades.append(trade)
+            self.add_trade(trade)
             
             # Update quantities
             logger.info("Updating trade quantities.")
@@ -150,7 +151,7 @@ class OrderBook:
                 taker_side="S"
             )
             logger.info("New trade added to output stream.")
-            self.trades.append(trade)
+            self.add_trade(trade)
             
             # Update quantities
             logger.info("Updating trade quantities.")
@@ -166,6 +167,9 @@ class OrderBook:
                 # Clean up empty price level
                 if len(buy_orders_at_price) == 0:
                     del self.buys[best_bid]
+
+    def add_trade(self, trade):
+        self.trades.append(trade)
 
     def amend_order(self, amend_obj):
         """Update sell object from both orders and buys/sells dictionaries."""

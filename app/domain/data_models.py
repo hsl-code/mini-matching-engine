@@ -1,8 +1,3 @@
-"""Data models for all order objects.
-
-todo make an order interface?
-"""
-
 class Buy:
     def __init__(self, buy_dict) -> None:
         self.type = buy_dict["type"]

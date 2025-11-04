@@ -1,5 +1,3 @@
-"""Service implementation. Implementation of Processor lives here.
-"""
 from logger import getLogger
 logger = getLogger(__name__)
 
@@ -29,9 +27,10 @@ class MatchingEngine:
         while input_stream:
             # Pop the first order
             order = input_stream.pop(0)
-            processed_data = self.process(order)
-            logger.info("Add processed data to output stream.")
-            self.output.extend(processed_data)
+            self.process(order)
+
+        logger.info("Getting all trades from order book.")
+        self.output = self.order_book.get_trades()
 
         return self.datastorage.output_stream(self.output)
     
@@ -47,6 +46,3 @@ class MatchingEngine:
             self.order_book.cancel_order(order)
         else:
             logger.error("Order type not recognised.")
-
-        logger.info("Get trades as array.")
-        return self.order_book.get_trades()

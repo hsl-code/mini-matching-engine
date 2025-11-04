@@ -14,7 +14,7 @@ def test_basic():
             "price":100,
             "maker_order_id":"B1",
             "taker_side":"S"
-         }
+        }
     ]
 
     engine = MatchingEngine(
